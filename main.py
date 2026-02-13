@@ -5,9 +5,9 @@ from watchdog.events import FileSystemEventHandler
 
 
 SOURCE_PATH = "C:\\wid120\\"
-SOURCE_PATH = "imageSource/"
+# SOURCE_PATH = "imageSource/"
 DESTINATION_PATH = "C:\\packer\\waferid.jpg"
-DESTINATION_PATH = "imageDestination/b.jpg"
+# DESTINATION_PATH = "imageDestination/b.jpg"
 image_extensions = {'.jpg', '.jpeg'}
 
 
