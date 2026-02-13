@@ -1,13 +1,13 @@
+import configparser
 import os
-from PIL import Image
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
+import sys
 
+from PIL import Image
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
 
 SOURCE_PATH = "C:\\wid120\\"
-# SOURCE_PATH = "imageSource/"
 DESTINATION_PATH = "C:\\packer\\waferid.jpg"
-# DESTINATION_PATH = "imageDestination/b.jpg"
 image_extensions = {'.jpg', '.jpeg'}
 
 
@@ -27,6 +27,12 @@ class ImageHandler(FileSystemEventHandler):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    base_path = os.path.dirname(os.path.realpath(sys.executable))
+    config_path = os.path.join(base_path, 'config.ini')
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    SOURCE_PATH = config['path']['source']
+    DESTINATION_PATH = f"{config['path']['destination']}{config['path']['file']}"
     event_handler = ImageHandler()
     observer = Observer()
     observer.schedule(event_handler, path=SOURCE_PATH, recursive=False)
