@@ -24,7 +24,7 @@ jobs:
 
       - name: Build EXE with PyInstaller
         run: |
-          pyinstaller --onefile main.py
+          pyinstaller main.py
 
       - name: Upload EXE Artifact
         uses: actions/upload-artifact@v4
